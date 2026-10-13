@@ -8,6 +8,8 @@ import { ChatPromptDto } from './dtos/chat-prompt.dto';
 import { chatPromptStreamUseCase } from './use-cases/chat-prompt-stream.use-case';
 import { ImageGenerationDto } from './dtos/image-generation.dto';
 import { imageGenerationUseCase } from './use-cases/image-generation.use-case';
+import { PokemonHelperDto } from './dtos/pokemon-helper.dto';
+import { getPokemonHelpUseCase } from './use-cases/get-pokemon-help.use-case';
 
 // Solo guardamos los turnos de la conversación, no los steps de herramientas
 export type ChatMessage =
@@ -47,5 +49,9 @@ export class GeminiService {
 
   imageGeneration(imageGenerationDto: ImageGenerationDto) {
     return imageGenerationUseCase(this.ai, imageGenerationDto);
+  }
+
+  getPokemonHelp(pokemonHelperDto: PokemonHelperDto) {
+    return getPokemonHelpUseCase(this.ai, pokemonHelperDto);
   }
 }
