@@ -16,6 +16,8 @@ import { FilesInterceptor } from '@nestjs/platform-express';
 import { ChatPromptDto } from './dtos/chat-prompt.dto';
 import { Interactions, Stream } from '@google/genai';
 import { ImageGenerationDto } from './dtos/image-generation.dto';
+import { PokemonHelperDto } from './dtos/pokemon-helper.dto';
+import { TriviaQuestionDto } from './dtos/trivia-question.dto';
 
 @Controller('gemini')
 export class GeminiController {
@@ -109,5 +111,15 @@ export class GeminiController {
       imageUrl,
       text,
     };
+  }
+
+  @Post('pokemon-helper')
+  getPokemonHelp(@Body() pokemonHelperDto: PokemonHelperDto) {
+    return this.geminiService.getPokemonHelp(pokemonHelperDto);
+  }
+
+  @Get('trivia/question/:topic')
+  getTriviaQuestion(@Param('topic') triviaQuestionDto: TriviaQuestionDto) {
+    return this.geminiService.getTriviaQuestion(triviaQuestionDto);
   }
 }
