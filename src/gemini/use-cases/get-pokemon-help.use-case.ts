@@ -1,5 +1,4 @@
 import { GoogleGenAI } from '@google/genai';
-import { BasicPromptDto } from '../dtos/basic-prompt.dto';
 import { PokemonHelperDto } from '../dtos/pokemon-helper.dto';
 
 export interface PokemonResponse {

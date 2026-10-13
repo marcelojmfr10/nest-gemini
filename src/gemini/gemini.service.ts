@@ -1,3 +1,4 @@
+import { TriviaQuestionDto } from './dtos/trivia-question.dto';
 import { Injectable } from '@nestjs/common';
 import { BasicPromptDto } from './dtos/basic-prompt.dto';
 
@@ -10,6 +11,7 @@ import { ImageGenerationDto } from './dtos/image-generation.dto';
 import { imageGenerationUseCase } from './use-cases/image-generation.use-case';
 import { PokemonHelperDto } from './dtos/pokemon-helper.dto';
 import { getPokemonHelpUseCase } from './use-cases/get-pokemon-help.use-case';
+import { getTriviaQuestionUseCase } from './use-cases/get-trivia-question.use-case';
 
 // Solo guardamos los turnos de la conversación, no los steps de herramientas
 export type ChatMessage =
@@ -53,5 +55,9 @@ export class GeminiService {
 
   getPokemonHelp(pokemonHelperDto: PokemonHelperDto) {
     return getPokemonHelpUseCase(this.ai, pokemonHelperDto);
+  }
+
+  getTriviaQuestion(triviaQuestionDto: TriviaQuestionDto) {
+    return getTriviaQuestionUseCase(this.ai, triviaQuestionDto);
   }
 }
